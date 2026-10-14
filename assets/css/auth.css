@@ -1,0 +1,66 @@
+/* Pantallas de autenticación: login, registro, verificación, recuperación */
+.pagina-auth {
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy) 160px, #F7F8FA 160px);
+}
+
+.auth-contenedor {
+  max-width: 440px;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 2rem;
+}
+
+.auth-logo {
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+.auth-logo .icono {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.6rem;
+  font-size: 1.6rem;
+  color: var(--navy-dark);
+}
+
+.auth-card {
+  background: #FFFFFF;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.75rem 1.5rem;
+}
+
+.auth-card h1 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--navy);
+}
+.auth-card p.subtitulo {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.auth-enlace {
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.separador-o {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  margin: 1.1rem 0;
+}
+.separador-o::before,
+.separador-o::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-soft);
+}

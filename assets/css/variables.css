@@ -1,0 +1,24 @@
+/*
+ * Paleta y variables globales de SmartTour AI.
+ * Mismos colores usados en los documentos y la presentación del proyecto,
+ * para que el maquetado se vea consistente con el resto de los entregables.
+ */
+:root {
+  --navy: #22314A;
+  --navy-dark: #182335;
+  --gold: #E3A857;
+  --gold-dark: #C98C3B;
+  --card-bg: #F4F6F8;
+  --text-dark: #1F2A37;
+  --text-muted: #6B7280;
+  --border-soft: #E2E6EA;
+  --success: #2E7D52;
+  --danger: #C94C4C;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 2px 10px rgba(34, 49, 74, 0.08);
+  --shadow-card-hover: 0 6px 18px rgba(34, 49, 74, 0.12);
+}

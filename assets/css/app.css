@@ -1,0 +1,98 @@
+/* Pantallas internas: home, resultado, detalle, perfil */
+
+.encabezado-app {
+  background: var(--navy);
+  color: #FFFFFF;
+  padding: 1.25rem;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.encabezado-app .ubicacion {
+  font-size: 0.75rem;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.buscador-flotante {
+  margin: -1.6rem 1.25rem 1rem;
+  background: #FFFFFF;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.buscador-flotante input {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 0.9rem;
+}
+
+.seccion {
+  padding: 0 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.seccion h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+}
+
+.carrusel-scroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.3rem;
+}
+.carrusel-scroll::-webkit-scrollbar { height: 4px; }
+
+.tarjeta-destino {
+  min-width: 150px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: #FFFFFF;
+}
+.tarjeta-destino .imagen {
+  height: 90px;
+  background: var(--card-bg);
+}
+.tarjeta-destino .info { padding: 0.6rem; }
+.tarjeta-destino .info .nombre { font-weight: 600; font-size: 0.85rem; }
+.tarjeta-destino .info .meta { font-size: 0.75rem; color: var(--text-muted); }
+
+.galeria-destino {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.4rem;
+}
+.galeria-destino div {
+  aspect-ratio: 1;
+  background: var(--card-bg);
+  border-radius: var(--radius-sm);
+}
+
+.panel-ajustes-algoritmo {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+}
+
+.resumen-metricas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+.resumen-metricas .metrica {
+  background: var(--card-bg);
+  border-radius: var(--radius-md);
+  padding: 0.6rem;
+  text-align: center;
+}
+.resumen-metricas .metrica .valor { font-weight: 700; color: var(--navy); }
+.resumen-metricas .metrica .etiqueta { font-size: 0.7rem; color: var(--text-muted); }

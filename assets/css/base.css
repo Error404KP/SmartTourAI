@@ -1,0 +1,101 @@
+/* Reset ligero y tipografía base */
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: #F7F8FA;
+  color: var(--text-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-contenedor {
+  max-width: 440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  position: relative;
+  padding-bottom: 90px; /* espacio para la barra inferior */
+}
+
+/* Botones con la identidad de SmartTour AI */
+.btn-smarttour {
+  background-color: var(--navy);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  transition: background-color .15s ease-in-out;
+}
+.btn-smarttour:hover,
+.btn-smarttour:focus {
+  background-color: var(--navy-dark);
+  color: #FFFFFF;
+}
+
+.btn-smarttour-outline {
+  background-color: transparent;
+  color: var(--navy);
+  border: 1px solid var(--navy);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.btn-google {
+  background-color: #FFFFFF;
+  color: var(--text-dark);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+}
+
+.text-gold { color: var(--gold-dark) !important; }
+.text-navy { color: var(--navy) !important; }
+
+.badge-pill-navy {
+  background-color: var(--navy);
+  color: #fff;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Barra de navegación inferior (pantallas internas) */
+.nav-inferior {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 440px;
+  background: #FFFFFF;
+  border-top: 1px solid var(--border-soft);
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 0;
+  z-index: 50;
+}
+.nav-inferior__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.nav-inferior__item i { font-size: 1.2rem; }
+.nav-inferior__item.activo { color: var(--navy); font-weight: 600; }
+
+/* Mensajes de error/éxito genéricos para los formularios */
+.mensaje-formulario {
+  display: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+.mensaje-formulario.visible { display: block; }
+.mensaje-formulario.danger { background: #FBEAEA; color: var(--danger); }
+.mensaje-formulario.success { background: #E8F3EC; color: var(--success); }
