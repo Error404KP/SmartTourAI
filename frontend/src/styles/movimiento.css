@@ -1,0 +1,85 @@
+/*
+ * Movimiento de SmartTour AI (estilo del diseño Fitness):
+ *  - La pantalla entra con un fundido; las tarjetas "suben" en cadena (--i).
+ *  - Cifras que cuentan, barritas que crecen, líneas que se trazan.
+ *  - Paradas que se despliegan, aviso flotante con resorte, sacudida en errores.
+ * Con "reducir movimiento" activado todo queda quieto.
+ */
+.capa { animation: entra .6s var(--ease); }
+@keyframes entra { from { opacity: 0; transform: scale(.985); filter: blur(6px); } }
+
+.sube { animation: sube .7s var(--ease) backwards; animation-delay: calc(var(--i, 0) * 70ms); }
+@keyframes sube { from { opacity: 0; transform: translateY(18px) scale(.98); } }
+
+.barritas span { animation: crece .9s var(--ease) backwards; animation-delay: calc(300ms + var(--k, 0) * 50ms); }
+.dia-segmento { animation: llena 1s var(--ease) .3s backwards; }
+@keyframes crece { from { transform: scaleY(0); } }
+@keyframes llena { from { transform: scaleX(0); } }
+
+.trazo { stroke-dasharray: 260; stroke-dashoffset: 260; animation: traza 1.6s var(--ease) .3s forwards; }
+@keyframes traza { to { stroke-dashoffset: 0; } }
+
+/* Títulos palabra por palabra (una vez por sesión) */
+.palabra { display: inline-block; animation: palabra-entra 560ms var(--ease) backwards; animation-delay: calc(120ms + var(--i) * 60ms); }
+@keyframes palabra-entra { from { opacity: 0; transform: translate3d(0, .35em, 0); filter: blur(4px); } }
+
+/* Relieve vivo del panel de acceso */
+.contornos-vivos { transform-origin: center; animation: deriva 38s ease-in-out infinite alternate; }
+.contornos-vivos[data-pausado='true'] { animation-play-state: paused; }
+@keyframes deriva { from { transform: scale(1.08); } to { transform: translate3d(-3%, 2%, 0) scale(1.08); } }
+
+/* Presión de botones */
+.boton { transition: transform .3s var(--resorte), box-shadow .3s, background-color .2s, color .2s; }
+.boton-primario:hover:not(:disabled) { transform: translateY(-2px); }
+.boton:active:not(:disabled) { transform: scale(.95); }
+.boton-icono, .campo-ojo { transition: transform .3s var(--resorte), background-color .2s; }
+.boton-icono:active { transform: scale(.9); }
+.campo-ojo:active { transform: translateY(-50%) scale(.9); }
+
+/* Cambio de texto dentro de un botón ("Guardar" -> "Guardado") */
+.texto-cambio { display: inline-flex; align-items: center; gap: inherit; animation: texto-entra var(--dur-cambio) var(--ease); }
+.texto-fijo { display: inline-flex; align-items: center; gap: inherit; }
+@keyframes texto-entra { from { opacity: 0; transform: translateY(4px); filter: blur(2px); } }
+
+/* Ojo de la contraseña: los dos íconos se cruzan */
+.icono-swap { display: grid; pointer-events: none; }
+.icono-swap > svg { grid-area: 1 / 1; transition: opacity var(--dur-cambio) ease-in-out, transform var(--dur-cambio) ease-in-out; }
+.icono-swap > svg[data-activo='false'] { opacity: 0; transform: scale(.25); }
+
+/* Paradas del recorrido */
+.parada-detalle { transition: grid-template-rows var(--dur-despliegue) var(--ease); }
+.parada-detalle-interior { opacity: 0; transform: translateY(-4px); transition: opacity var(--dur-despliegue) var(--ease), transform var(--dur-despliegue) var(--ease); }
+.parada-detalle[data-open='true'] .parada-detalle-interior { opacity: 1; transform: none; }
+.parada-flecha { transition: transform var(--dur-despliegue) var(--ease); }
+
+/* Aviso flotante */
+.aviso { opacity: 0; transform: translateY(14px) scale(.95); transition: opacity .25s var(--ease), transform var(--dur-aviso) var(--resorte); }
+.aviso[data-open='true'] { opacity: 1; transform: none; }
+
+/* Mensajes de formulario */
+.mensaje-error { animation: sacudir 220ms var(--curva-sacudida); }
+.mensaje-exito { animation: texto-entra var(--dur-cambio) var(--ease); }
+@keyframes sacudir { 25% { transform: translateX(4px); } 50% { transform: translateX(-2px); } 75% { transform: translateX(2px); } }
+
+/* Ruta del mapa recién generada */
+.mapa-animada .mapa-ruta, .mapa-animada .mapa-ruta-borde { stroke-dasharray: 1 1.1; stroke-dashoffset: 1; animation: trazar 900ms 150ms var(--ease) forwards; }
+.mapa-animada .mapa-pin { opacity: 0; animation: aparecer 250ms var(--retraso) var(--ease) forwards; }
+@keyframes trazar { to { stroke-dashoffset: 0; } }
+@keyframes aparecer { to { opacity: 1; } }
+.sendero-animado .parada-item { animation: parada-entra 360ms var(--retraso) var(--ease) backwards; }
+@keyframes parada-entra { from { opacity: 0; transform: translate3d(-8px, 0, 0); } }
+
+/* Espera */
+.girando { animation: girar 800ms linear infinite; }
+@keyframes girar { to { transform: rotate(360deg); } }
+.esqueleto { animation: brillo 1.2s linear infinite; }
+@keyframes brillo { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+.codigo input[data-lleno='true'] { animation: digito 180ms var(--resorte); }
+@keyframes digito { from { transform: scale(.9); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; transition-duration: .01ms !important; }
+  .trazo { stroke-dashoffset: 0; }
+  .mapa-animada .mapa-ruta, .mapa-animada .mapa-ruta-borde { stroke-dashoffset: 0; }
+  .mapa-animada .mapa-pin { opacity: 1; }
+}

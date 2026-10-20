@@ -1,8 +1,9 @@
 /* Reset ligero y tipografía base */
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-  background-color: #F7F8FA;
+  font-family: var(--font);
+  background-color: #FAF6F1;
   color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -18,48 +19,57 @@ a {
   padding-bottom: 90px; /* espacio para la barra inferior */
 }
 
-/* Botones con la identidad de SmartTour AI */
+/* Botones con la identidad de SmartTour AI (acento naranja en degradado) */
 .btn-smarttour {
-  background-color: var(--navy);
+  background: linear-gradient(140deg, var(--gold-2), var(--gold));
   color: #FFFFFF;
   border: none;
-  border-radius: var(--radius-md);
-  padding: 0.7rem 1rem;
-  font-weight: 600;
-  transition: background-color .15s ease-in-out;
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-accent);
+  transition: transform .25s var(--resorte), box-shadow .25s;
 }
 .btn-smarttour:hover,
 .btn-smarttour:focus {
-  background-color: var(--navy-dark);
   color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(255, 106, 26, 0.45);
 }
+.btn-smarttour:active { transform: scale(.97); }
 
 .btn-smarttour-outline {
   background-color: transparent;
-  color: var(--navy);
-  border: 1px solid var(--navy);
-  border-radius: var(--radius-md);
-  font-weight: 600;
+  color: var(--gold-dark);
+  border: 1.5px solid var(--gold);
+  border-radius: 999px;
+  font-weight: 700;
+  padding: 0.7rem 1.1rem;
+  transition: background-color .2s, color .2s;
+}
+.btn-smarttour-outline:hover {
+  background-color: var(--gold);
+  color: #FFFFFF;
 }
 
 .btn-google {
   background-color: #FFFFFF;
   color: var(--text-dark);
   border: 1px solid var(--border-soft);
-  border-radius: var(--radius-md);
-  font-weight: 500;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 .text-gold { color: var(--gold-dark) !important; }
 .text-navy { color: var(--navy) !important; }
 
 .badge-pill-navy {
-  background-color: var(--navy);
-  color: #fff;
+  background-color: rgba(255, 106, 26, 0.12);
+  color: var(--gold-dark);
   border-radius: 999px;
-  padding: 0.25rem 0.75rem;
+  padding: 0.3rem 0.8rem;
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Barra de navegación inferior (pantallas internas) */
@@ -70,7 +80,9 @@ a {
   transform: translateX(-50%);
   width: 100%;
   max-width: 440px;
-  background: #FFFFFF;
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
   border-top: 1px solid var(--border-soft);
   display: flex;
   justify-content: space-around;
@@ -84,9 +96,10 @@ a {
   gap: 2px;
   font-size: 0.7rem;
   color: var(--text-muted);
+  transition: color .2s, transform .3s var(--resorte);
 }
 .nav-inferior__item i { font-size: 1.2rem; }
-.nav-inferior__item.activo { color: var(--navy); font-weight: 600; }
+.nav-inferior__item.activo { color: var(--gold); font-weight: 700; transform: translateY(-2px); }
 
 /* Mensajes de error/éxito genéricos para los formularios */
 .mensaje-formulario {
@@ -97,5 +110,5 @@ a {
   margin-bottom: 1rem;
 }
 .mensaje-formulario.visible { display: block; }
-.mensaje-formulario.danger { background: #FBEAEA; color: var(--danger); }
-.mensaje-formulario.success { background: #E8F3EC; color: var(--success); }
+.mensaje-formulario.danger { background: rgba(240, 56, 107, 0.1); color: var(--danger); }
+.mensaje-formulario.success { background: rgba(34, 197, 94, 0.12); color: #16A34A; }

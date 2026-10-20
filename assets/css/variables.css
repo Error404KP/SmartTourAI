@@ -1,24 +1,36 @@
 /*
  * Paleta y variables globales de SmartTour AI.
- * Mismos colores usados en los documentos y la presentación del proyecto,
- * para que el maquetado se vea consistente con el resto de los entregables.
+ * Rediseño (oct 2026): mismo lenguaje visual que el tablero de referencia
+ * "Fitness" que aprobó el equipo — acento naranja, tinta oscura cálida,
+ * tarjetas muy redondeadas con sombra suave y tipografía Plus Jakarta Sans.
+ * Nota: esta paleta es solo para la app (HTML/PHP); los documentos y la
+ * presentación del proyecto siguen usando el azul marino/dorado original.
+ *
+ * Se conservan los NOMBRES de las variables (--navy, --gold, etc.) para no
+ * tener que tocar las 9 pantallas — solo cambia su valor.
  */
 :root {
-  --navy: #22314A;
-  --navy-dark: #182335;
-  --gold: #E3A857;
-  --gold-dark: #C98C3B;
-  --card-bg: #F4F6F8;
-  --text-dark: #1F2A37;
-  --text-muted: #6B7280;
-  --border-soft: #E2E6EA;
-  --success: #2E7D52;
-  --danger: #C94C4C;
+  --navy: #1E1A17;        /* antes azul marino → ahora tinta oscura cálida */
+  --navy-dark: #140F0C;
+  --gold: #FF6A1A;        /* antes dorado → ahora acento naranja */
+  --gold-dark: #E2541A;
+  --gold-2: #FF8A3D;       /* variante clara, para degradados */
+  --info: #4F7CFF;
+  --card-bg: #F6F2EC;
+  --text-dark: #1A1715;
+  --text-muted: #8A847F;
+  --border-soft: #ECE6DF;
+  --success: #22C55E;
+  --danger: #F0386B;
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
 
-  --shadow-card: 0 2px 10px rgba(34, 49, 74, 0.08);
-  --shadow-card-hover: 0 6px 18px rgba(34, 49, 74, 0.12);
+  --shadow-card: 0 10px 28px rgba(26, 23, 21, 0.09);
+  --shadow-card-hover: 0 18px 40px rgba(26, 23, 21, 0.15);
+  --shadow-accent: 0 10px 24px rgba(255, 106, 26, 0.38);
+
+  --font: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --resorte: cubic-bezier(.34, 1.4, .64, 1);
 }

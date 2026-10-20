@@ -1,10 +1,11 @@
 /* Pantallas internas: home, resultado, detalle, perfil */
 
 .encabezado-app {
-  background: var(--navy);
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-dark) 100%);
   color: #FFFFFF;
   padding: 1.25rem;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 16px 30px rgba(26, 23, 21, 0.2);
 }
 
 .encabezado-app .ubicacion {
@@ -18,9 +19,9 @@
 .buscador-flotante {
   margin: -1.6rem 1.25rem 1rem;
   background: #FFFFFF;
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-card-hover);
+  padding: 0.7rem 1.1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -57,6 +58,11 @@
   overflow: hidden;
   box-shadow: var(--shadow-card);
   background: #FFFFFF;
+  transition: transform .35s var(--resorte), box-shadow .3s;
+}
+.tarjeta-destino:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 .tarjeta-destino .imagen {
   height: 90px;
@@ -94,5 +100,5 @@
   padding: 0.6rem;
   text-align: center;
 }
-.resumen-metricas .metrica .valor { font-weight: 700; color: var(--navy); }
+.resumen-metricas .metrica .valor { font-weight: 800; color: var(--gold-dark); }
 .resumen-metricas .metrica .etiqueta { font-size: 0.7rem; color: var(--text-muted); }

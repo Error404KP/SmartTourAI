@@ -1,0 +1,51 @@
+/*
+ * Tokens de SmartTour AI — diseño "Tablero Fitness" que eligió el equipo:
+ * paneles de vidrio oscuro sobre una sala desenfocada, tarjetas blancas
+ * y acento naranja. Tipografía: Plus Jakarta Sans.
+ */
+:root {
+  /* Acentos */
+  --naranja: #FF6A1A;
+  --naranja-2: #FF8A3D;
+  --naranja-hondo: #E2541A;
+  --verde: #22C55E;
+  --verde-hondo: #16A34A;
+  --rosa: #F0386B;
+  --azul-f: #4F7CFF;
+
+  /* Vidrio (paneles oscuros) */
+  --vidrio: rgba(38, 34, 32, .74);
+  --vidrio-2: rgba(255, 255, 255, .07);
+  --vidrio-borde: rgba(255, 255, 255, .09);
+  --txt-vidrio: #F4F1EE;
+  --txt-vidrio-2: #A7A09A;
+
+  /* Tarjetas blancas */
+  --blanco: #FFFFFF;
+  --tinta: #1A1715;
+  --gris: #8A847F;
+  --gris-claro: #F2F0EE;
+  --gris-borde: #E7E3DF;
+  --error: #E5484D;
+
+  --font: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Radios: vidrio > tarjeta > control */
+  --r-vidrio: 30px;
+  --r-tarjeta: 20px;
+  --r-control: 14px;
+
+  /* Movimiento */
+  --ease: cubic-bezier(.2, .8, .2, 1);
+  --resorte: cubic-bezier(.34, 1.4, .64, 1);
+  --curva-sacudida: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  --dur-despliegue: 260ms;
+  --dur-aviso: 450ms;
+  --dur-cambio: 200ms;
+
+  /* Margen exterior: se ajusta al tamaño de la ventana */
+  --pad: clamp(10px, 1.1vw, 22px);
+  --alto-util: calc(100dvh - 2 * var(--pad));
+
+  color-scheme: dark;
+}

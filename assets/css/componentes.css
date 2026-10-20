@@ -29,7 +29,11 @@
   background: #FFFFFF;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  border: 1px solid var(--border-soft);
+  transition: transform .35s var(--resorte), box-shadow .3s;
+}
+.tarjeta-smarttour.alza:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* Código de verificación (6 dígitos) */
@@ -48,9 +52,9 @@
   border: 1px solid var(--border-soft);
 }
 .codigo-verificacion input:focus {
-  border-color: var(--navy);
+  border-color: var(--gold);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(34, 49, 74, 0.15);
+  box-shadow: 0 0 0 3px rgba(255, 106, 26, 0.18);
 }
 
 /* Tarjetas de sitio / itinerario */
@@ -84,11 +88,12 @@
   width: 72px;
   height: 72px;
   border-radius: 50%;
-  background: var(--gold);
-  color: var(--navy-dark);
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 1.4rem;
+  box-shadow: var(--shadow-accent);
 }

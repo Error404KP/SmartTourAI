@@ -1,0 +1,147 @@
+/* Base: reset, sala desenfocada, vidrio, tarjetas blancas, botones y campos. */
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0; font-family: var(--font); font-size: 14px; line-height: 1.45;
+  color: var(--txt-vidrio); background: #2A211B;
+  -webkit-font-smoothing: antialiased;
+}
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; border: 0; background: none; padding: 0; }
+button:disabled { cursor: not-allowed; }
+a { color: inherit; text-decoration: none; }
+h1, h2, h3, p { margin: 0; }
+ul, ol, dl, dd, fieldset { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+fieldset { border: 0; min-width: 0; }
+:focus-visible { outline: 2px solid var(--naranja); outline-offset: 2px; border-radius: 10px; }
+.num { font-variant-numeric: tabular-nums; }
+.solo-lectores { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- La "sala" desenfocada del fondo, pintada con degradados ---------- */
+.sala { position: fixed; inset: 0; z-index: -1; background: #3A2D24; overflow: hidden; }
+.sala i { position: absolute; display: block; filter: blur(38px); }
+.sala .techo { left: -10%; right: -10%; top: -6%; height: 22%; background: linear-gradient(180deg, #C9B9A6, #8D7462); }
+.sala .viga { left: 8%; width: 30%; top: 0; height: 9%; background: #5A3B26; filter: blur(16px); }
+.sala .viga.d { left: 62%; width: 32%; }
+.sala .muro { left: 0; top: 12%; width: 34%; height: 70%; background: linear-gradient(180deg, #D9CDBE, #B7A592); }
+.sala .cuadro { left: 2%; top: 22%; width: 13%; height: 34%; background: #EFE7DA; filter: blur(10px); }
+.sala .ventana { right: 0; top: 14%; width: 26%; height: 70%; background: linear-gradient(180deg, #6E6157, #3A302A); }
+.sala .lampara { right: 22%; top: 30%; width: 12%; height: 50%; background: radial-gradient(ellipse at 50% 20%, #F5C27A, #A2622A 60%, transparent 70%); filter: blur(30px); opacity: .9; }
+.sala .sofa { left: -4%; bottom: -4%; width: 40%; height: 30%; background: linear-gradient(180deg, #CDBFAE, #8C7B6A); border-radius: 40px; }
+.sala .cojin { left: 3%; bottom: 14%; width: 9%; height: 14%; background: #4A5A66; border-radius: 20px; filter: blur(14px); }
+.sala .piso { left: 20%; right: -10%; bottom: -10%; height: 26%; background: linear-gradient(180deg, #6B5444, #3E3029); }
+.sala::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(30,24,20,.15), rgba(20,16,13,.55)); }
+
+/* ---------- Paneles ---------- */
+.vidrio {
+  background: var(--vidrio); border: 1px solid var(--vidrio-borde); border-radius: var(--r-vidrio);
+  -webkit-backdrop-filter: blur(28px) saturate(1.3); backdrop-filter: blur(28px) saturate(1.3);
+  box-shadow: 0 30px 80px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.blanca {
+  background: var(--blanco); color: var(--tinta); border-radius: var(--r-tarjeta); padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18); min-width: 0;
+  transition: transform .4s var(--resorte), box-shadow .3s;
+}
+.blanca.alza:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(0,0,0,.28); }
+
+/* ---------- Marca ---------- */
+.marca { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 17px; letter-spacing: -.01em; color: #FFFFFF; }
+.marca svg { flex: none; }
+.marca-disco { fill: var(--naranja); }
+.marca-cerro { fill: #FFFFFF; }
+.marca-sol { fill: #FFE1C9; }
+.marca-ai { margin-left: 5px; font-size: 10.5px; font-weight: 800; padding: 2px 7px; border-radius: 999px; background: var(--naranja); color: #FFFFFF; vertical-align: 2px; }
+
+/* ---------- Botones ---------- */
+.boton {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 10px 20px; border-radius: 999px;
+  font-weight: 700; font-size: 13px; white-space: nowrap;
+}
+.boton-primario {
+  background: linear-gradient(140deg, var(--naranja-2), var(--naranja)); color: #FFFFFF;
+  box-shadow: 0 10px 24px rgba(255,106,26,.45);
+}
+.boton-primario:disabled { opacity: .75; }
+.boton-contorno { background: var(--gris-claro); color: #5A544F; }
+.boton-contorno:hover:not(:disabled) { background: #E7E3DF; }
+.boton-confirmado:disabled { background: #E9F9EF; color: var(--verde-hondo); cursor: default; }
+.boton-salir { background: #FFE9EF; color: var(--rosa); }
+.boton-google {
+  width: 100%; background: var(--vidrio-2); border: 1px solid var(--vidrio-borde); color: var(--txt-vidrio);
+  font-weight: 600;
+}
+.boton-google:disabled { cursor: default; }
+.etiqueta-pronto { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.12); color: var(--txt-vidrio-2); }
+
+/* Botón redondo (cabecera, volver, compartir) — como la campana del diseño */
+.boton-icono {
+  position: relative; width: 38px; height: 38px; flex: none; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(0,0,0,.35); border: 1px solid var(--vidrio-borde); color: #FFFFFF;
+}
+.boton-icono:hover { background: rgba(255,255,255,.12); }
+.boton-icono.con-punto::after { content: ""; position: absolute; top: 8px; right: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--naranja); box-shadow: 0 0 0 2px #2A2522; }
+
+.enlace-boton { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; color: var(--naranja); font-size: inherit; }
+.enlace-boton:hover:not(:disabled) { color: var(--naranja-hondo); }
+.enlace-boton:disabled { color: var(--gris); }
+.enlace-tenue { color: var(--gris); }
+
+/* Pastillas y chips */
+.chip-gris {
+  display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; font-weight: 600;
+  padding: 5px 11px; border-radius: 999px; background: var(--gris-claro); color: #5A544F;
+}
+button.chip-gris:hover { background: #E7E3DF; }
+.pastilla { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 11px; border-radius: 999px; background: rgba(255,106,26,.14); color: var(--naranja); }
+.pastilla-vidrio { background: rgba(255,255,255,.12); color: #FFFFFF; }
+
+/* ---------- Campos (sobre vidrio oscuro) ---------- */
+.formulario { display: grid; gap: 14px; }
+.campo { display: grid; gap: 6px; }
+.campo label { font-size: 12px; font-weight: 600; color: var(--txt-vidrio-2); }
+.campo-control { position: relative; display: flex; align-items: center; }
+.campo-control input {
+  width: 100%; min-height: 46px; padding: 11px 44px 11px 42px;
+  background: rgba(0,0,0,.35); border: 1px solid var(--vidrio-borde); border-radius: 999px;
+  color: #FFFFFF; font-size: 13.5px; outline: 0; transition: border-color .2s, background .2s;
+}
+.campo-control input::placeholder { color: var(--txt-vidrio-2); }
+.campo-control input:focus { border-color: var(--naranja); background: rgba(0,0,0,.45); }
+.campo-icono { position: absolute; left: 15px; color: var(--txt-vidrio-2); pointer-events: none; }
+.campo-ojo { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; color: var(--txt-vidrio-2); }
+.campo-ojo:hover { color: #FFFFFF; background: var(--vidrio-2); }
+.campo-ayuda { font-size: 11.5px; color: var(--txt-vidrio-2); }
+
+.casilla { display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; color: var(--txt-vidrio-2); cursor: pointer; }
+.casilla input { width: 17px; height: 17px; margin: 1px 0 0; accent-color: var(--naranja); flex: none; }
+
+/* ---------- Mensajes ---------- */
+.mensaje { padding: 10px 14px; border-radius: var(--r-control); font-size: 12.5px; font-weight: 600; }
+.mensaje-error { background: rgba(240,56,107,.14); color: #FF8FAB; border: 1px solid rgba(240,56,107,.3); }
+.mensaje-exito { background: rgba(34,197,94,.14); color: #6EE7A0; border: 1px solid rgba(34,197,94,.3); }
+.blanca .mensaje-error { background: #FFE9EF; color: #C9264F; border-color: #FFD1DC; }
+.blanca .mensaje-exito { background: #E9F9EF; color: var(--verde-hondo); border-color: #C9F0D7; }
+
+.nota-seguridad { display: flex; gap: 8px; align-items: flex-start; font-size: 11.5px; color: var(--txt-vidrio-2); }
+.nota-seguridad svg { flex: none; margin-top: 1px; color: var(--verde); }
+.blanca .nota-seguridad { color: var(--gris); }
+
+/* ---------- Aviso flotante ---------- */
+.aviso-zona { position: fixed; z-index: 70; left: 0; right: 0; bottom: calc(24px + env(safe-area-inset-bottom, 0px)); display: flex; justify-content: center; pointer-events: none; }
+.aviso {
+  background: #FFFFFF; color: var(--tinta); padding: 10px 16px; border-radius: 999px; font-weight: 600; font-size: 13px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.3); display: flex; gap: 8px; align-items: center; max-width: calc(100vw - 32px);
+}
+.aviso svg { color: var(--verde); flex: none; }
+
+/* ---------- Esqueleto de carga ---------- */
+.esqueleto { display: block; height: 1em; border-radius: 6px; background: linear-gradient(90deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.08) 100%); background-size: 200% 100%; }
+.blanca .esqueleto { background-image: linear-gradient(90deg, #EFEBE7 0%, #F8F6F4 50%, #EFEBE7 100%); }
+.esqueleto-titulo { width: 11ch; height: .9em; margin: .1em 0; }
+.esqueleto-linea { width: 18ch; height: .8em; margin-top: 6px; }
+
+.vacio { font-size: 12.5px; color: var(--gris); }
+.vacio a { color: var(--naranja); font-weight: 700; }

@@ -1,6 +1,6 @@
 /* Pantallas de autenticación: login, registro, verificación, recuperación */
 .pagina-auth {
-  background: linear-gradient(180deg, var(--navy) 0%, var(--navy) 160px, #F7F8FA 160px);
+  background: linear-gradient(180deg, var(--navy) 0%, var(--navy) 160px, #FAF6F1 160px);
 }
 
 .auth-contenedor {
@@ -17,14 +17,15 @@
 .auth-logo .icono {
   width: 56px;
   height: 56px;
-  border-radius: 16px;
-  background: var(--gold);
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--gold-2), var(--gold));
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 0.6rem;
   font-size: 1.6rem;
-  color: var(--navy-dark);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-accent);
 }
 
 .auth-card {

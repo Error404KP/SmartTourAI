@@ -1,0 +1,54 @@
+/* Pantallas de acceso: dos paneles de vidrio sobre la sala desenfocada. */
+.auth {
+  min-height: 100vh; min-height: 100dvh; position: relative; overflow: hidden;
+  padding: var(--pad) max(var(--pad), env(safe-area-inset-right, 0px)) var(--pad) max(var(--pad), env(safe-area-inset-left, 0px));
+  display: grid;
+}
+/* Ocupa todo el navegador: panel grande a la izquierda y formulario a la derecha */
+.auth-grid {
+  width: 100%; min-height: var(--alto-util); display: grid; gap: clamp(10px, 1vw, 18px);
+  grid-template-columns: minmax(0, 1.4fr) minmax(400px, 1fr); align-items: stretch;
+}
+
+/* Panel izquierdo: marca, lema y una muestra de la agenda */
+.auth-paisaje { position: relative; overflow: hidden; padding: clamp(24px, 3vw, 56px); display: flex; flex-direction: column; gap: 22px; }
+.auth-paisaje .contornos { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .5; pointer-events: none; }
+.auth-paisaje .contornos path { fill: none; stroke: rgba(255,255,255,.07); stroke-width: 1; }
+.auth-paisaje .contornos .contorno-mayor { stroke: rgba(255,138,61,.22); }
+.auth-paisaje > :not(.contornos) { position: relative; }
+.auth-lema { margin-top: auto; display: grid; gap: 12px; max-width: 640px; }
+.auth-lema-titulo { font-size: clamp(28px, 3.6vw, 64px); font-weight: 800; line-height: 1.08; letter-spacing: -.02em; color: #FFFFFF; }
+.auth-lema-titulo .acento { color: var(--naranja); }
+.auth-lema-texto { color: var(--txt-vidrio-2); font-size: clamp(13.5px, 1vw, 16px); max-width: 46ch; }
+
+.auth-muestra { display: grid; gap: 8px; max-width: 560px; }
+.auth-muestra h3 { font-size: 13.5px; color: #FFFFFF; display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+.auth-muestra h3::before { content: ""; width: 3px; height: 13px; background: var(--naranja); border-radius: 2px; }
+.auth-cobertura { font-size: 11.5px; color: var(--txt-vidrio-2); display: flex; align-items: center; gap: 8px; }
+.auth-cobertura::before { content: ""; width: 8px; height: 8px; border-radius: 9px; background: var(--naranja); box-shadow: 0 0 12px var(--naranja); }
+
+/* Panel derecho: el formulario */
+.auth-hoja { padding: clamp(24px, 3vw, 56px); display: flex; align-items: center; justify-content: center; }
+.auth-contenido { width: 100%; max-width: 460px; display: grid; gap: 16px; }
+.auth-contenido h1 { font-size: 24px; font-weight: 800; letter-spacing: -.01em; color: #FFFFFF; }
+.auth-subtitulo { color: var(--txt-vidrio-2); font-size: 13px; margin-top: -8px; }
+.auth-subtitulo strong { color: #FFFFFF; overflow-wrap: anywhere; }
+.auth-pie { font-size: 12.5px; color: var(--txt-vidrio-2); text-align: center; }
+.auth-pie a, .auth-pie .enlace-boton { color: var(--naranja); font-weight: 700; }
+.enlace-secundario { justify-self: end; margin-top: -4px; font-size: 12px; font-weight: 600; color: var(--txt-vidrio-2); }
+.enlace-secundario:hover { color: #FFFFFF; }
+.enlace-volver { display: inline-flex; align-items: center; gap: 6px; }
+.formulario .boton-primario { width: 100%; margin-top: 4px; }
+
+.separador { display: flex; align-items: center; gap: 12px; color: var(--txt-vidrio-2); font-size: 11.5px; }
+.separador::before, .separador::after { content: ""; flex: 1; height: 1px; background: var(--vidrio-borde); }
+
+/* Código de 6 dígitos */
+.codigo { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.codigo input {
+  width: 100%; aspect-ratio: 1 / 1.15; text-align: center; font-size: 22px; font-weight: 800;
+  background: rgba(0,0,0,.35); border: 1px solid var(--vidrio-borde); border-radius: 16px; color: #FFFFFF; outline: 0;
+  transition: border-color .2s, background .2s;
+}
+.codigo input:focus { border-color: var(--naranja); }
+.codigo input[data-lleno='true'] { background: linear-gradient(140deg, var(--naranja-2), var(--naranja)); border-color: transparent; box-shadow: 0 8px 18px rgba(255,106,26,.35); }

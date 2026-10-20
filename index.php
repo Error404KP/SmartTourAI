@@ -1,10 +1,8 @@
 <?php
 /**
  * Punto de entrada del proyecto.
- * Por ahora (sin backend funcional todavía) siempre manda a login.php.
- * Cuando exista manejo real de sesión, aquí se decidirá:
- *   si hay sesión activa -> pages/home.php
- *   si no -> login.php
+ * Las pantallas ahora viven en la app de React (código en frontend/, compilada en app/).
+ * Cuando exista manejo real de sesión, la app decidirá si mostrar login o inicio.
  */
-header('Location: login.php');
+header('Location: app/');
 exit;

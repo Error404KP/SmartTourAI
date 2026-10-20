@@ -1,4 +1,4 @@
-# SmartTour AI — Maquetado (HTML + PHP + JS)
+# SmartTour AI — Maquetado (React + PHP)
 
 Proyecto integrador "Formulación de Proyectos de Tecnología" / "Fundamentos de
 IA" — UT San Juan del Río. Equipo: Isaac Mendoza Ramírez y Diego Ahmed Olvera
@@ -13,7 +13,34 @@ de destino y perfil). **No hay lógica de negocio real todavía**: las APIs en
 PHP responden con datos simulados y traen comentarios `TODO` marcando
 exactamente qué falta conectar a MySQL.
 
-## Cómo está organizado
+## Frontend en React
+
+Las pantallas ahora están hechas con **React + Vite** (carpeta `frontend/`) y se
+compilan a `app/`, que Apache sirve en `http://localhost/SmartTourAI/app/`.
+Siguen hablando con las mismas APIs PHP de `api/` mediante `llamarAPI()`
+(`frontend/src/api.js`).
+
+```
+frontend/
+├── src/pages/        Login, Registro, Verificar, Recuperar, Restablecer,
+│                     Inicio, Itinerario, Destino, Perfil
+├── src/components/   AuthLayout, AppLayout (nav inferior), Formulario, Mapa, Contornos
+├── src/styles/       tokens.css (paleta, tipografía y tiempos de animación), base, auth, app,
+│                     responsive (tablet/escritorio) y movimiento (animaciones, ver skill ui-animation)
+├── src/datos.js      Sitios e itinerario de ejemplo (hasta que exista backend)
+└── src/estado.jsx    Itinerario actual y avisos compartidos entre pantallas
+```
+
+- `cd frontend && npm install` (solo la primera vez).
+- `npm run dev`: servidor de desarrollo con recarga en vivo en
+  `http://localhost:5173/SmartTourAI/app/` (las llamadas a `/SmartTourAI/api`
+  se reenvían a Apache, así que XAMPP debe estar encendido).
+- `npm run build`: genera `app/`. Hazlo después de cada cambio para verlo en XAMPP.
+
+Los archivos `.php` de pantallas y `assets/` son el maquetado anterior en
+HTML + Bootstrap; ya no se usan (`index.php` redirige a `app/`).
+
+## Cómo está organizado (maquetado anterior)
 
 ```
 SmartTourAI/
@@ -77,4 +104,26 @@ la función y el endpoint.
 1. Esta carpeta ya vive en `C:\xampp\htdocs\SmartTourAI`.
 2. Inicia Apache desde el panel de XAMPP (MySQL no es necesario todavía, ya
    que ninguna API lo usa en este punto).
-3. Abre `http://localhost/SmartTourAI/` en el navegador — te llevará a `login.php`.
+3. Abre `http://localhost/SmartTourAI/` en el navegador; te llevará a la app de React
+   (`app/`). Si `app/` no existe, primero corre `npm run build` dentro de `frontend/`.
+
+## Trabajar en la nube (GitHub Codespaces)
+
+El repositorio trae el archivo `.devcontainer.json`, así que se puede abrir un
+entorno completo en el navegador, sin instalar nada:
+
+1. En GitHub abre el repositorio → botón verde **Code** → pestaña **Codespaces**
+   → **Create codespace on main**.
+2. Espera a que termine de preparar el entorno (instala PHP 8.2, Node 20 y
+   corre `npm install` en `frontend/`).
+3. La app se abre sola en la pestaña del puerto **8080** (`/SmartTourAI/`).
+   Si no se abre, ve a la pestaña **Ports** y abre el 8080.
+4. Para editar con recarga en vivo: en la terminal corre
+   `cd frontend && npm run dev` y abre el puerto **5173** en
+   `/SmartTourAI/app/`. Al terminar, `npm run build` para actualizar `app/`.
+5. Guarda tus cambios con **Source Control** (commit + push). En la PC solo
+   haz **Pull** en GitHub Desktop para traerlos.
+
+Notas: MySQL no está incluido todavía (las APIs aún responden datos
+simulados). El plan gratis de GitHub incluye un número limitado de horas de
+Codespaces al mes; detén el Codespace cuando no lo uses.

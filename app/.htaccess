@@ -1,0 +1,7 @@
+# Permite recargar cualquier ruta de React (ej. /SmartTourAI/app/perfil) sin 404.
+RewriteEngine On
+RewriteBase /SmartTourAI/app/
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /SmartTourAI/app/index.html [L]
